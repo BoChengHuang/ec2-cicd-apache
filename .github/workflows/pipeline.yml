@@ -10,11 +10,10 @@ jobs:
       - name: environment test
         run: echo "hey"
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: whoami
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${ { secrets.KEY }}
+          REMOTE_HOST: ${ { secrets.HOST }}
+          REMOTE_USER: ${ { secrets.USERNAME }}
+          TARGET: ${ { secrets.TARGET_DIR }
   
