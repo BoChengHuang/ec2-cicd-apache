@@ -11,9 +11,10 @@ jobs:
         run: echo "hey"
       - name: executing remote ssh commands using password
         uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${ { secrets.KEY }}
-          REMOTE_HOST: ${ { secrets.HOST }}
-          REMOTE_USER: ${ { secrets.USERNAME }}
-          TARGET: ${ { secrets.TARGET_DIR }
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: whoami
   
