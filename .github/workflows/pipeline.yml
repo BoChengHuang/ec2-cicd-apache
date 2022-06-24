@@ -1,5 +1,8 @@
 name: run test and deploy
-on: [push]
+on: 
+  push:
+    branches:
+      - "main"
 
 jobs:
   test:
@@ -15,7 +18,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /var/www/html
+            cd ${{ secrets.DIR }}
             sudo git fetch --all
             sudo git reset --hard origin/main
   
