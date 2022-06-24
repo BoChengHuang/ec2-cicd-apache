@@ -14,5 +14,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: whoami
+          script: |
+            cd /var/www/html
+            sudo git fetch --all
+            sudo git reset --hard origin/main
   
